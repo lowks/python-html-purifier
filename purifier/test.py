@@ -33,19 +33,22 @@ bleach_test_whitelist = {
     'attrs' : ['attr-2']
 }
 
+
 def read_file(name):
     return open(name).read()
+
 
 def HTMLPurifier_test(index=3, whitelist=HTMLPurifier_test_whitelist):
     purifier = HTMLPurifier(whitelist)
     return purifier.feed(read_file(test_data_files[index]))
 
+
 def bleach_test(index=3):
     return bleach.clean(
-        read_file(test_data_files[index]), 
-        tags = bleach_test_whitelist['tags'],
-        attributes = bleach_test_whitelist['attrs'],
-        strip = False
+        read_file(test_data_files[index]),
+        tags=bleach_test_whitelist['tags'],
+        attributes=bleach_test_whitelist['attrs'],
+        strip=False
     )
 
 if __name__ == '__main__':
